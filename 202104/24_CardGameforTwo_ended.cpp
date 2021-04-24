@@ -21,13 +21,7 @@ int main() {
     }
     auto itr = find(a.begin(), a.end(), max_val);
     a.erase(itr, itr+1);
-    for(int i = 0; i < a.size(); i++) {
-    	cout << a.at(i) << ",";
-  	}
-    cout << endl;
   }
-  cout << "alice_sum:"<< alice_sum << endl;
-  cout << "bob_sum:" << bob_sum << endl;
   cout << (alice_sum - bob_sum) << endl;
   return 0;
 }
