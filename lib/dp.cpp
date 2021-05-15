@@ -1,38 +1,29 @@
 #include <iostream>
-#include <vector>
-#include <cstdlib>
+#include <climits>
+#include <algorithm>
 using namespace std;
-template<class T> inline bool chmax(T& a, T b) { if (a < b) { a = b; return 1; } return 0; }
-template<class T> inline bool chmin(T& a, T b) { if (a > b) { a = b; return 1; } return 0; }
-
-const long long INF = 1LL << 60;
 
 // 入力
-int N;
-long long h[100010];
+int n, W;
+int weight[110], value[110];
 
-// DP テーブル
-long long dp[100010];
+// DPテーブル
+int dp[110][10010];
 
 int main() {
-  int N; cin >> N;
-  for (int i = 0; i < N; ++i) cin >> h[i];
+  cin >> n >> W;
+  for (int i = 0; i < n; ++i) cin >> value[i] >> weight[i];
 
-  // 初期化 (最小化問題なので INF に初期化)
-  for (int i = 0; i < 100010; ++i) dp[i] = INF;
+  // DP初期条件: dp[0][w] = 0
+  for (int w = 0; w <= W; ++w) dp[0][w] = 0;
 
-  // 初期条件
-  dp[0] = 0;
-
-  // ループ
-  for (int i = 1; i < N; ++i) {
-    chmin(dp[i], dp[i - 1] + abs(h[i] - h[i - 1]));
-    if (i > 1) chmin(dp[i], dp[i - 2] + abs(h[i] - h[i - 2]));
+  // DPループ
+  for (int i = 0; i < n; ++i) {
+    for (int w = 0; w <= W; ++w) {
+      if (w >= weight[i]) dp[i+1][w] = max(dp[i][w-weight[i]] + value[i], dp[i][w]);
+      else dp[i+1][w] = dp[i][w];
+    }
   }
 
-  // 答え
-  cout << dp[N-1] << endl;
+  cout << dp[n][W] << endl;
 }
-
-// https://qiita.com/drken/items/dc53c683d6de8aeacf5a
-// https://atcoder.jp/contests/dp/tasks/dp_a
