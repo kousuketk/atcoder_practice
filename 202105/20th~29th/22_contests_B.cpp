@@ -12,6 +12,7 @@ int main() {
   string s;
   cin >> s;
   string rev_s;
+  // reverse(s.begin(), s.end())で反転することができる
   for(int i = 0; i < s.size(); i++) {
     char c = s.at(s.size()-i-1);
     rev_s.push_back(c);
