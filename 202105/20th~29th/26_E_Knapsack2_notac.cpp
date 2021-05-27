@@ -43,13 +43,12 @@ int main() {
       }
       if(dp[i-1][j] != INF) {
         dp[i][j] = dp[i-1][j];
-        dp[i][j+val[i-1]] = dp[i][j] + wei[i-1];
+        dp[i][j+val[i-1]] = min(dp[i][j+val[i-1]], dp[i][j] + wei[i-1]);
       }
     }
   }
   int ans = 0;
   for(int j = 0; j <= max_val; j++) {
-    cout << j << " " << dp[N][j] << endl;
     if(dp[N][j] <= W) ans = max(ans, j);
   }
   cout << ans << endl;
