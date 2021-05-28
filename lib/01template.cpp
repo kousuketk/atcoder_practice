@@ -7,6 +7,10 @@ using P = pair<int,int>;
 using T = tuple<int,int,int>;
 using Graph = vector<vector<int>>;
 const int INF = 1001001001;
+void printVec(vector<int> &vec) {
+  for (auto itr = vec.begin(); itr != vec.end(); itr++) cout << *itr << " "; 
+  cout << endl;
+}
 
 int main() {
 }
