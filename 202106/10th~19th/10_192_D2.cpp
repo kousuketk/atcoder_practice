@@ -15,14 +15,15 @@ void printVec(vector<int> &vec) {
 string X; 
 ll M;
 
-bool check(int x) {
+bool check(ll x) {
   ll tmp = 0;
   if(x > M) return false;
   for(ll i = 0; i < X.size(); i++) {
     ll a = pow(x, i);
-    if(a > M) return false;
+    // cout << a << " " << endl;
+    if(a > M || a < 0) return false;
     tmp += (X[X.size()-1-i]-'0') * a;
-    if(tmp > M) return false;
+    if(tmp > M || tmp < 0) return false;
   }
   return tmp <= M;
 }
@@ -43,7 +44,6 @@ int main() {
   ll right = M+1;
   while(right - left > 1) {
     ll mid = (left + right) / 2;
-    // cout << mid << endl;
     if(check(mid)) left = mid;
     else right = mid;
   }
