@@ -30,6 +30,7 @@ int main() {
     g[b].push_back({a, cost});
   }
   vector<ll> dist(n, INF);
+  // 距離, 頂点の順で入れていく(priority_queueで距離が小さい順に入っていく)
   priority_queue<P, vector<P>, greater<P>> q;
   // 探索開始点(x)は0であり、queに入れる
   dist[x] = 0;
