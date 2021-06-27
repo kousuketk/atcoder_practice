@@ -13,4 +13,18 @@ void printVec(vector<int> &vec) {
 }
 
 int main() {
+  int a, b, c, d; cin >> a >> b >> c >> d;
+  if(b >= c*d) {
+    cout << "-1" << endl;
+    return 0;
+  }
+  long long i = 0;
+  while(true) {
+    long long mizu = a + b*i;
+    long long red = c*i;
+    if(mizu <= red*d) break;
+    i++;
+  }
+  cout << i << endl;
+  return 0;
 }

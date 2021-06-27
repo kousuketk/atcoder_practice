@@ -11,6 +11,9 @@ void printVec(vector<int> &vec) {
   for (auto itr = vec.begin(); itr != vec.end(); itr++) cout << *itr << " "; 
   cout << endl;
 }
-
+ 
 int main() {
+  int a, b, c; cin >> a >> b >> c;
+  int mins = min({a, b, c});
+  cout << (a+b+c - mins) << endl;
 }
