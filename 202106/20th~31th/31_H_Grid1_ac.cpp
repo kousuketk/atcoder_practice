@@ -21,15 +21,15 @@ ll waru = 1000000000 + 7;
 ll rec(ll i, ll j) {
   if(seen[i][j]) return memo[i][j];
   seen[i][j] = true;
-  if(i == H-1 && j == W-2) return memo[i][j] == 1;  // =
-  if(i == H-2 && j == W-1) return memo[i][j] == 1;  // =
+  if(i == H-1 && j == W-2) return memo[i][j] = 1;
+  if(i == H-2 && j == W-1) return memo[i][j] = 1;
   ll res = 0;
   // 右に行く
-  if(grid[i][j+1] != '#' && j+1 < W) { // j+1 < Wを先に比較する. grid[i][j+1]を先に見てしまうと, grid外を見たときにエラーとなる.
+  if(j+1 < W && grid[i][j+1] != '#') {
     res = (res + rec(i, j+1)) % waru;
   }
   // 下に行く
-  if(grid[i+1][j] != '#' && i+1 < H) { // i+1 < Hを先に比較する. grid[i+1][j]を先に見てしまうと, grid外を見たときにエラーとなる.
+  if(i+1 < H && grid[i+1][j] != '#') {
     res = (res + rec(i+1, j)) % waru;
   }
   return memo[i][j] = res;
