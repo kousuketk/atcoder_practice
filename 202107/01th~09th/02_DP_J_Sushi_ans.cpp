@@ -40,7 +40,7 @@ int main() {
   }
 
   // 初期化
-  memset(dep, -1, sizeof(dp));
+  memset(dp, -1, sizeof(dp));
 
   cout << fixed << setprecision(10) << rec(one, two, three) << endl;
 }
