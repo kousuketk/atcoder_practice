@@ -20,17 +20,14 @@ int main() {
   // esare, resare, maerd, remaerd
   // idx == S.size()-1 になったらok
   int idx = 0;
-  int count = 0;
-  while(count < 10) {
+  while(true) {
     // 5の時
-    count++;
     if(idx > (N-5)) {
       cout << "NO" << endl;
       return 0;
     }
     string tmp_s = S.substr(idx, 5);
-    cout << tmp_s << endl;
-    if(tmp_s == "esare" || tmp_s == "resare") {
+    if(tmp_s == "esare" || tmp_s == "maerd") {
       idx += 5;
       if(idx == N) {
         cout << "YES" << endl;
@@ -38,5 +35,35 @@ int main() {
       }
       continue;
     }
+    // 6の時
+    if(idx > N-6) {
+      cout << "NO" << endl;
+      return 0;
+    }
+    string tmp_s2 = S.substr(idx, 6);
+    if(tmp_s2 == "resare") {
+      idx += 6;
+      if(idx == N) {
+        cout << "YES" << endl;
+        return 0;
+      }
+      continue;
+    }
+    // 7の時
+    if(idx > N-7) {
+      cout << "NO" << endl;
+      return 0;
+    }
+    string tmp_s3 = S.substr(idx, 7);
+    if(tmp_s3 == "remaerd") {
+      idx += 7;
+      if(idx == N) {
+        cout << "YES" << endl;
+        return 0;
+      }
+      continue;
+    }
+    cout << "NO" << endl;
+    return 0;
   }
 }
