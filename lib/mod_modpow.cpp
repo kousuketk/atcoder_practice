@@ -7,7 +7,7 @@ long long modpow(long long a, long long n, long long mod) {
   while (n > 0) {
     // 最下位ビットが1のときに計算(掛けていく, 最終的に指数の計算に持っていく)
     if (n & 1) res = res * a % mod;
-    // 最下位ビットの計算に合わせていく
+    // a, a^2, a^4, a^8, a^16, a^32, ...
     a = a * a % mod;
     n >>= 1;
   }

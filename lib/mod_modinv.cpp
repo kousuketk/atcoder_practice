@@ -24,4 +24,9 @@ int main() {
   // a を 10000000007 で割ってから b の逆元をかけて計算
   a %= MOD;
   cout << a * modinv(b, MOD) % MOD << endl;
+
+  // // mod. 13 での逆元を求めてみる
+  // for (int i = 1; i < 13; ++i) {
+  //   cout << i << " 's inv: " << modinv(i, 13) << endl;
+  // }
 }
