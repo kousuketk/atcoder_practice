@@ -31,9 +31,10 @@ int rec(int bit, int v)
     if (!(prev_bit & (1<<u))) continue; // u が prev_bit になかったらダメ
 
     // 再帰的に探索
-    if (res > rec(prev_bit, u) + dist[u][v]) {
-      res = rec(prev_bit, u) + dist[u][v];
-    }
+    res = min(res, rec(prev_bit, u) + dist[u][v]);
+    // if (res > rec(prev_bit, u) + dist[u][v]) {
+    //   res = rec(prev_bit, u) + dist[u][v];
+    // }
   }
 
   return dp[bit][v] = res; // メモしながらリターン
@@ -55,9 +56,10 @@ int main()
   // 探索
   int res = INF;
   for (int v = 0; v < N; ++v) {
-    if (res > rec((1<<N)-1, v)) {
-      res = rec((1<<N)-1, v);
-    }
+    res = min(res, rec((1<<N)-1, v));
+    // if (res > rec((1<<N)-1, v)) {
+    //   res = rec((1<<N)-1, v);
+    // }
   }
   cout << res << endl;
 }
