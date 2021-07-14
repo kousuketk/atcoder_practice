@@ -63,3 +63,5 @@ int main()
   }
   cout << res << endl;
 }
+
+// https://qiita.com/drken/items/7c6ff2aa4d8fce1c9361#11-bit-dp
