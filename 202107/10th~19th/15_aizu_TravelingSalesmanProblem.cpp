@@ -19,28 +19,22 @@ int dist[21][21];
 int dp[(1<<20) + 1][21]; // dpテーブルは余裕をもったサイズにする
 vector<vector<int>> G;
 
-int rec(int start, int bit, int v)
+int rec(int bit, int v)
 {
-  // すでに探索済みだったらリターン
   if (dp[bit][v] != -1) return dp[bit][v];
 
-  // 部分集合が最後だったら、startとのコストを出してreturn
+  // 部分集合が最後だったら、v→0へのコストを出してreturn
   if (bit == (1<<v)) {
-    return dp[bit][v] = dist[start][v];
+    return dp[bit][v] = dist[0][v]; // 最後に0→vへのコストを算出
   }
 
-  // 答えを格納する変数
   int res = INF;
-
-  // bit の v を除いたもの
   int prev_bit = bit & ~(1<<v);
 
   // v の手前のノードとしてG[v]を全探索
   for(int nv : G[v]) {
-    if (!(prev_bit & (1<<nv))) continue; // e.to が prev_bit になかったらダメ
-
-    // 再帰的に探索
-    res = min(res, rec(start, prev_bit, nv) + dist[nv][v]);
+    if (!(prev_bit & (1<<nv))) continue; // nv が prev_bit になかったらダメ
+    res = min(res, rec(prev_bit, nv) + dist[nv][v]);
   }
 
   return dp[bit][v] = res; // メモしながらリターン
@@ -66,15 +60,11 @@ int main()
 
   // 探索
   int res = INF;
-  for (int v = 0; v < N; ++v) {
-    res = min(res, rec(v, (1<<N)-1, v));
-  }
-  if(res >= INF) cout << "-1" << endl;
+  res = min(res, rec((1<<N)-1, 0));
+  if(res == INF) cout << "-1" << endl;
   else cout << res << endl;
 }
-// 探索は頂点0から探索をすればいい
 
-// どの頂点からスタートしても最短となるハミルトン閉路が存在することを考えると、
-// 自分で適当にスタートとなる頂点を決めてしまって大丈夫です。
-// 始点と終点を一致させるためには、頂点0からスタートしたとして以下のようにすれば良いです。
-// https://algo-logic.info/bit-dp/#toc_id_3
+// ハミルトングラフ, ハミルトン経路であるから、どの頂点から出発しても答えは同じ
+// 逆に「好きな都市から出発して、全ての都市を訪れる.」ような問題は、
+// ハミルトングラフでないから(1辺が欠けたようなもの)、出発地の全通りで求めないといけない
