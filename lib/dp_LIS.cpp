@@ -26,3 +26,12 @@ int main() {
   }
   cout << dp.size() << endl;
 }
+// dp[i]:長さがiであるような増加部分列における最終要素の最小値として扱っても良い
+// // dp[i] = INF;
+// for(int i = 0; i < N; i++) {
+//   auto itr = lower_bound(ALL(dp), vec[i]);
+//   *itr = vec[i];
+// }
+// // dp[i] != INFの最後のiを求めればいい
+// auto itr = lower_bound(ALL(dp), INF);
+// cout << itr - dp.begin() << endl;
