@@ -2,3 +2,4 @@
 21_abc188_E_Peddler
 22_abc187_E_ThroughPath
 26_abc184_D_incrementOfCoins
+28_abc183_E__QueenOnGrid
