@@ -16,7 +16,7 @@ void printVec(vector<int> &vec) {
 
 int N;
 int dist[21][21];
-int dp[(1<<20) + 1][21]; // dpテーブルは余裕をもったサイズにする
+int dp[(1<<20) + 1][21];
 vector<vector<int>> G;
 
 int rec(int bit, int v)
@@ -33,16 +33,15 @@ int rec(int bit, int v)
 
   // v の手前のノードとしてG[v]を全探索
   for(int nv : G[v]) {
-    if (!(prev_bit & (1<<nv))) continue; // nv が prev_bit になかったらダメ
+    if (!(prev_bit & (1<<nv))) continue;
     res = min(res, rec(prev_bit, nv) + dist[nv][v]);
   }
 
-  return dp[bit][v] = res; // メモしながらリターン
+  return dp[bit][v] = res;
 }
 
 int main()
 {
-  // 入力
   cin >> N;
   int M; cin >> M;
   G.resize(N);
@@ -55,10 +54,8 @@ int main()
     dist[s][t] = d;
   }
 
-  // テーブルを全部 -1 にしておく (-1 でなかったところは探索済)
   for (int bit = 0; bit < (1<<N); ++bit) for (int v = 0; v < N; ++v) dp[bit][v] = -1;
 
-  // 探索
   int res = INF;
   res = min(res, rec((1<<N)-1, 0));
   if(res == INF) cout << "-1" << endl;

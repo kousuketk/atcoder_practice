@@ -45,7 +45,7 @@ int main() {
 //       tmp_N = tmp_N/i;
 //     }
 //   }
-//   if(N != 1) vec.push_back(N);
+//   if(tmp_N != 1) vec.push_back(tmp_N);
 //   printVec(vec);
 // }
 
