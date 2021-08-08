@@ -22,16 +22,21 @@ int main() {
     cout << -1 << endl;
     return 0;
   }
-  int sum = 7;
-  // int ten = 1;
+  int sum = 0;
+  int ten = 1;
   int ans = -1;
-  for(int i = 0; i < K; i++) {
-    if(sum % K == 0) {
+  for(int i = 0; i <= 10000000; i++) {
+    sum = (sum + 7*ten) % MOD;
+    if(sum % K == 0 || sum+MOD % K == 0) {
       ans = i+1;
       break;
     }
-    sum = (sum*10 + 7) % K;
+    ten = ten*10 % MOD;
   }
   cout << ans << endl;
   return 0;
 }
+
+// Kの倍数判定したいのに、MODを違う数で取ってはいけない.
+// MODを違う数で取ってしまうと、Kの倍数かどうかはわからなくなってしまうから、
+// MODはKでとろう(その場合にK回ループすれば問題ない)
