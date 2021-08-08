@@ -14,6 +14,8 @@ void printVec(vector<int> &vec) {
   for (auto itr = vec.begin(); itr != vec.end(); itr++) cout << *itr << " "; 
   cout << endl;
 }
+vector<int> next_h = {1, -1, 0, 0};
+vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
 }
