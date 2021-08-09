@@ -18,4 +18,11 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  int N; cin >> N;
+  for(int i = 1000; i <= 10000; i += 1000) {
+    if(i >= N) {
+      cout << (i - N) << endl;
+      return 0;
+    }
+  }
 }

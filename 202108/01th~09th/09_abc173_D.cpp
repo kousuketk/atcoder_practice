@@ -18,4 +18,18 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  int N; cin >> N;
+  vector<ll> vec(N);
+  rep(i,N) cin >> vec[i];
+  sort(ALL(vec), greater());
+  priority_queue<ll, vector<ll>> que;
+  ll ans = 0;
+  que.push(vec[0]);
+  rep(i,N-1) {
+    int tmp = que.top(); que.pop();
+    ans += tmp;
+    que.push(vec[i+1]);
+    que.push(vec[i+1]);
+  }
+  cout << ans << endl;
 }

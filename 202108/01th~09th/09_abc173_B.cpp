@@ -18,4 +18,18 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  int N; cin >> N;
+  map<string, int> mp;
+  mp["AC"] = 0;
+  mp["WA"] = 0;
+  mp["TLE"] = 0;
+  mp["RE"] = 0;
+  rep(i,N) {
+    string s; cin >> s;
+    mp[s]++;
+  }
+  cout << "AC x " << mp["AC"] << endl; 
+  cout << "WA x " << mp["WA"] << endl; 
+  cout << "TLE x " << mp["TLE"] << endl; 
+  cout << "RE x " << mp["RE"] << endl; 
 }
