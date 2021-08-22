@@ -18,4 +18,15 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  string s; cin >> s;
+  int N = s.size();
+  sort(ALL(s));
+  ll K; cin >> K;
+  ll count = 1;
+  do {
+    if(count == K) {
+      cout << s << endl;
+    }
+    count++;
+  }while(next_permutation(s.begin(), s.end()));
 }

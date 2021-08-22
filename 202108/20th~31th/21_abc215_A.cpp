@@ -18,4 +18,8 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  string ans = "Hello,World!";
+  string s; cin >> s;
+  if(s == ans) cout << "AC" << endl;
+  else cout << "WA" << endl;
 }

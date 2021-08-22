@@ -18,4 +18,16 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  ll N; cin >> N;
+  int ans = 0;
+  ll tmp = 1;
+  rep(i,100) {
+    if(tmp <= N) {
+      tmp = tmp*2;
+      ans = i+1;
+    } else {
+      break;
+    }
+  }
+  cout << ans-1 << endl;
 }
