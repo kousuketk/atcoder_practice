@@ -32,7 +32,6 @@ func scanString() string {
 	return sc.Text()
 }
 
-// Go(1.14.1)
 func main() {
 	sc.Split(bufio.ScanWords)
 	r := scanInt()
