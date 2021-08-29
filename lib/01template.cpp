@@ -17,5 +17,6 @@ void printVec(vector<int> &vec) {
 vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
+// C++(GCC 9.2.1)
 int main() {
 }

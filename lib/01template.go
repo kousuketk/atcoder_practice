@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"fmt"
 	"os"
 	"strconv"
 )
@@ -17,6 +18,14 @@ func scanInt() int {
 	return i
 }
 
+func scanString() string {
+	sc.Scan()
+	return sc.Text()
+}
+
+// Go(1.14.1)
 func main() {
 	sc.Split(bufio.ScanWords)
+	r := scanInt()
+	fmt.Println(r)
 }
