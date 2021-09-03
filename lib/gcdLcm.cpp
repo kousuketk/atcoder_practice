@@ -1,5 +1,5 @@
 //min(x,y)が0以下の場合はmax(x,y)が返される
-//ユークリッドの互除法を元に実装
+//ユークリッドの互除法を元に実装→計算量O(logN)
 long long gcd(long long x,long long y){
   if(x<y) swap(x,y);
   //xの方が常に大きい
