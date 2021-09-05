@@ -42,3 +42,4 @@ int main() {
 // 6
 // 7 6 8 6 1 1
 // →rec(l,mid)にしたら通った
+// 類題：https://atcoder.jp/contests/abc217/tasks/abc217_f
