@@ -18,4 +18,25 @@ vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
 int main() {
+  int N; cin >> N;
+  vector<P> vec(N);
+  rep(i,N) {
+    int x, y; cin >> x >> y;
+    vec[i] = P(x,y);
+  }
+  sort(ALL(vec));
+  double sum = 0;
+  ll count = 0;
+  do {
+    rep(i,N-1) {
+      int x1 = vec[i].first;
+      int y1 = vec[i].second;
+      int x2 = vec[i+1].first;
+      int y2 = vec[i+1].second;
+      sum += sqrt(pow(x1-x2, 2) + pow(y1-y2, 2));
+    }
+    count++;
+  } while (next_permutation(vec.begin(), vec.end()));
+  double ans = sum/count;
+  cout << fixed << setprecision(8) << ans << endl;
 }
