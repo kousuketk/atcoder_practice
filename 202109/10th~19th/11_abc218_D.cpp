@@ -66,3 +66,7 @@ int main() {
   }
   cout << ans << endl;
 }
+
+// 斜めの組を見つけて、
+// if(s.count({x1, y2}) && s.count({x2, y1}))
+// ↑こうすることで他の2つも見つかる(setを使う)
