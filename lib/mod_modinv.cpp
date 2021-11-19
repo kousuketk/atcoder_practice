@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// mod. m での a の逆元 a^{-1} を計算する
+// mod m での a の逆元 a^{-1} を計算する → O(log(a))
 long long modinv(long long a, long long m) {
   long long b = m, u = 1, v = 0;
   while (b) {
@@ -14,7 +14,7 @@ long long modinv(long long a, long long m) {
   return u;
 }
 
-// a ÷ b mod. MOD を計算してみる
+// a ÷ b mod MOD を計算してみる
 int main() {
   const int MOD = 1000000007;
 
@@ -24,9 +24,11 @@ int main() {
   // a を 10000000007 で割ってから b の逆元をかけて計算
   a %= MOD;
   cout << a * modinv(b, MOD) % MOD << endl;
+  // modinv(b, MOD)でbの逆元が出るから、それにaをかけるだけ
+  // (aをかけるのは、modにおける割り算の性質 → 割り算のときは、元の逆元さえ求まってしまえば、かけるだけで答えが出る)
 
-  // // mod. 13 での逆元を求めてみる
-  // for (int i = 1; i < 13; ++i) {
-  //   cout << i << " 's inv: " << modinv(i, 13) << endl;
-  // }
+  // プラスアルファとして、mod 13 での逆元を求めてみる
+  for (int i = 1; i < 13; ++i) {
+    cout << i << " 's inv: " << modinv(i, 13) << endl;
+  }
 }
