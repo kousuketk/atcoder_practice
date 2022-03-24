@@ -17,5 +17,15 @@ void printVec(vector<int> &vec) {
 vector<int> next_h = {1, -1, 0, 0};
 vector<int> next_w = {0, 0, 1, -1};
 
+// 全ての最大公約数を求める
 int main() {
+  int N; cin >> N;
+  vector<int> vec(N);
+  rep(i,N) cin >> vec[i];
+  int val = vec[0];
+  for(int i = 1; i < N; i++) {
+    val = __gcd(val, vec[i]);
+  }
+  cout << val << endl;
+  return 0;
 }
