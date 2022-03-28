@@ -74,7 +74,7 @@ struct StronglyConnectedComponents {
   }
 
   // compo[v]：iはgroupに属する
-  // grp[i]：i番目のgroupはvを持つ(隣接リスト)
+  // grp[i]：i番目のgroupはvを持つ(隣接リスト, トポロジカルソート順)
   void build_grp() {
     int grp_siz = grp.size();
     rep(v,N) {
@@ -85,7 +85,7 @@ struct StronglyConnectedComponents {
 };
 
 int main() {
-  int V, E, Q; cin >> V >> E;
+  int V, E; cin >> V >> E;
   Graph g(V), buff;
   for(int i = 0; i < E; i++) {
     int a, b; cin >> a >> b;
@@ -93,13 +93,16 @@ int main() {
   }
   StronglyConnectedComponents scc(g);
   scc.build(buff);
-  cin >> Q;
-  while (Q--) {
-    int a, b; cin >> a >> b;
-    if(scc[a] == scc[b]) cout << 1 << endl;  // scc[v] = group：頂点vはgroupに属する
-    else cout << 0 << endl;
+  scc.build_grp();
+  int siz = scc.grp.size();
+  cout << siz << endl;
+  rep(i,siz) {
+    int tmpsiz = scc.grp[i].size();
+    cout << tmpsiz << " ";
+    for(int nv : scc.grp[i]) cout << nv << " ";
+    cout << endl;
   }
-  return 0; 
+  return 0;
 }
 
 // https://onlinejudge.u-aizu.ac.jp/courses/library/5/GRL/3/GRL_3_C
