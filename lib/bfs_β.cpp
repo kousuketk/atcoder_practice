@@ -5,10 +5,7 @@ using namespace std;
 using Graph = vector<vector<int>>;
 
 int main() {
-  // 頂点数と辺数
   int N, M; cin >> N >> M;
-
-  // グラフ入力受取
   Graph G(N);
   for (int i = 0; i < M; ++i) {
     int a, b;
