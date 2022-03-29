@@ -37,7 +37,7 @@ int main() {
       if(dist[tmp.s] == INF) continue;  // INFのときも更新すると、たどり着かない頂点がINFでなくなる可能性がある
       if(dist[tmp.t] <= dist[tmp.s] + tmp.cost) continue;
       dist[tmp.t] = dist[tmp.s] + tmp.cost;
-      if(i == V-1) {
+      if(i == V-1) {  // V-1回以内の更新で終了すれば負の閉路は存在しない. V回まで更新が続けば負の閉路が存在する
         cout << "NEGATIVE CYCLE" << endl;
         return 0;
       }
