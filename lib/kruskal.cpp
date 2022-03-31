@@ -1,8 +1,24 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
-#define rep(i,n) for (int i=0; i < int(n); i++)
+#include <algorithm>
+#define rep(i,n) for (int i = 0; i < (n); ++i)
+using ll = long long;
+using P = pair<int,int>;
+using T = tuple<int,int,int>;
+using Graph = vector<vector<int>>;
+const int INF = 1001001001;
+void printVec(vector<int> &vec) {
+  for (auto itr = vec.begin(); itr != vec.end(); itr++) cout << *itr << " "; 
+  cout << endl;
+}
+
+struct Edge {
+  int cost, a, b;
+
+  bool operator<(const Edge& o) const {
+    return cost < o.cost;
+  }
+};
 
 struct UnionFind
 {
@@ -31,59 +47,26 @@ struct UnionFind
   }
 };
 
-struct Edge
-{
-  int a, b, cost;
-
-  // コストの大小で順序定義
-  bool operator<(const Edge& o) const {
-    return cost < o.cost;
-  }
-};
-
-// 頂点数と辺集合の組として定義したグラフ
-struct Graph
-{
-  int n;
-  vector<Edge> es;
-
-  // クラスカル法で無向最小全域木のコストの和を計算する
-  // グラフが非連結のときは最小全域森のコストの和となる
-  int kruskal() {
-    // コストが小さい順にソート
-    sort(es.begin(), es.end());
-
-    UnionFind tree(n);
-    int min_cost = 0;
-
-    // for(Edge& e : es) {} でもできそう
-    rep(ei, es.size()) {
-      Edge& e = es[ei];
-      // 連結していなかったら連結してコストを追加する
-      if (!tree.same(e.a, e.b)) {
-        min_cost += e.cost;
-        tree.unite(e.a, e.b);
-      }
-    }
-    return min_cost;
-  }
-};
-
-Graph input_graph() {
-  Graph g;
-  int m;
-  cin >> g.n >> m;
-  rep(i, m) {
-    Edge e;
-    cin >> e.a >> e.b >> e.cost;
-    g.es.push_back(e);
-  }
-  return g;
-}
-
 int main()
 {
-  Graph g = input_graph();
-  cout << "最小全域木のコスト: " << g.kruskal() << endl;
+  int N, M; cin >> N >> M;
+  vector<Edge> E(M);
+  rep(i,M) {
+    int a, b, cost; cin >> a >> b >> cost;
+    E[i] = Edge{cost, a, b};
+  }
+  UnionFind tree(N);
+  sort(E.begin(), E.end());
+  int min_cost = 0;
+  for(Edge& e : E) {
+    if (!tree.same(e.a, e.b)) {
+      tree.unite(e.a, e.b);
+      min_cost += e.cost;
+    }
+  }
+  cout << min_cost << endl;
   return 0;
 }
+
+// グラフは連結であることを仮定している。 
+// グラフが連結でない場合、連結成分数が最大の最小全域森が求まる
