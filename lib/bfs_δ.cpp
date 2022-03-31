@@ -34,7 +34,7 @@ int main() {
   for (auto v : order) cout << v << endl;
 }
 
-// ↓入次数でもできる
+// ↓入次数でもできる(DAGをトポロジカルソート順に並べるならok, しかしサイクルがあるものなどは別途考慮が必要)
 // int main() {
 //   int V, E; cin >> V >> E;
 //   Graph G(V);
