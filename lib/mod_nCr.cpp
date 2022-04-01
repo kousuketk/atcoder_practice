@@ -19,7 +19,7 @@ void COMinit() {
 }
 
 // 二項係数計算
-long long COM(int n, int k){
+long long COM(int n, int k){ // nCr=n!/r!(n−r)!
   if (n < k) return 0;
   if (n < 0 || k < 0) return 0;
   return fac[n] * (finv[k] * finv[n - k] % MOD) % MOD;

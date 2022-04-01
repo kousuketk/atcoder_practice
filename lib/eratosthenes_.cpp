@@ -15,17 +15,17 @@ void printVec(vector<int> &vec) {
   cout << endl;
 }
 
-vector<int> ans_vec; // 素数を格納していく
+vector<int> ans_vec; // 素数の配列
 
-// Nまでの素数をans_vecに入れていく
+// N以下の素数をans_vecに入れる
 void eratosthenes(int N) {
   vector<bool> is_prime(N+1);
-  for(int i = 0; i <= N; i++) is_prime[i] = true;  // とりあえず全部trueにしておく
+  for(int i = 0; i <= N; i++) is_prime[i] = true;
   
   for(int i = 2; i <= N; i++) {
     if(is_prime[i]) {
-      for(int j = 2*i; j <= N; j += i) is_prime[j] = false;  // 倍数をfalseにしていく
-      ans_vec.push_back(i); // 素数を入れていく
+      for(int j = 2*i; j <= N; j += i) is_prime[j] = false;
+      ans_vec.push_back(i);
     }
   }
 }

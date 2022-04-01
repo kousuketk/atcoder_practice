@@ -25,14 +25,16 @@ void comb(vector<vector <long long int> > &v){
   }
 }
 
+// aCbを前処理O(N^2), クエリO(1)で答える
 int main() {
-  int L; cin >> L;
-  L -= 12;
+  // int L; cin >> L;
+  // L -= 12;
 
-  int a = 12-1+L;
-  int b = 11;
+  // int a = 12-1+L;
+  // int b = 11;
+  int a, b; cin >> a >> b;
   vector<vector<ll>> v(a+1, vector<ll>(a+1, 0));
   comb(v);
   cout << v[a][b] << endl;
-  // v[a][b]でaCrを取得できる
+  // v[a][b]でaCbを取得できる
 }
