@@ -15,17 +15,18 @@ void printVec(vector<int> &vec) {
   cout << endl;
 }
 
-vector<int> ans_vec; // 素数の配列
-
-// N以下の素数をans_vecに入れる
-void eratosthenes(int N) {
-  vector<bool> is_prime(N+1);
-  for(int i = 0; i <= N; i++) is_prime[i] = true;
-  
-  for(int i = 2; i <= N; i++) {
+// エラトステネスの篩の計算量は、O(nloglogn)
+int prime[MAX_N];  // i番目の素数
+bool is_prime[MAX_N+1];  // 素数かどうか
+int sieve(int n) {  // 整数nまで、素数かどうかを調べ、素数の数を返す
+  int p = 0;
+  for(int i = 0; i <= n; i++) is_prime[i] = true;
+  is_prime[0] = is_prime[1] = false;
+  for(int i = 2; i <= n; i++) {
     if(is_prime[i]) {
-      for(int j = 2*i; j <= N; j += i) is_prime[j] = false;
-      ans_vec.push_back(i);
+      prime[p++] = i;
+      for(int j = 2*i; j <= n; j += i) is_prime[j] = false;
     }
   }
+  return p;
 }

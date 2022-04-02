@@ -18,6 +18,7 @@ void printVec(vector<int> &vec) {
 bool is_prime[MAX_L];  // 素数判定する区間の長さ(例, b-a+1)
 bool is_prime_small[MAX_SORT_B];  // Bまでの素数を求めるとき√bまでの値を見れば、Bまでの素数判定ができる
 
+// 制約a<b<=10^12, b-a<=10^6のとき、区間[2,√b)と区間[a,b)に分けて素数かどうかを判断する
 // Nまでの素数をans_vecに入れていく
 void eratosthenes(int N) {
   for(int i = 0; i*i <= b; i++) is_prime_small[i] = true;  // とりあえず全部trueにしておく
@@ -32,3 +33,4 @@ void eratosthenes(int N) {
 }
 
 // 蜂本p113, 区間篩
+// is_prime[i]:整数(a+i)が素数かどうか
