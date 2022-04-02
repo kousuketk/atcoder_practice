@@ -46,7 +46,7 @@ int main() {
       // 短い距離を更新できたらqueに追加する
       if(dist[e.to] <= dist[v] + e.cost) continue;
       dist[e.to] = dist[v] + e.cost;
-      q.emplace(e.cost, e.to);
+      q.emplace(dist[e.to], e.to);
     }
   }
   cout << dist[y] << endl;
