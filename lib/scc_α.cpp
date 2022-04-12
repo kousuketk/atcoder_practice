@@ -73,10 +73,9 @@ struct StronglyConnectedComponents {
     }
   }
 
-  // compo[v]：iはgroupに属する
-  // grp[i]：i番目のgroupはvを持つ(隣接リスト)
+  // compo[v]：iはgroupに属する(小さい番号からトポロジカルソート順になっている)
+  // grp[i]：i番目のgroupはvを持つ(隣接リスト, 小さい番号からトポロジカルソート順になっている)
   void build_grp() {
-    int grp_siz = grp.size();
     rep(v,N) {
       int group = compo[v];
       grp[group].push_back(v);
