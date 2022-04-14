@@ -23,18 +23,17 @@ int main() {
       mp[s] = c;
     }
   }
-  bool flag = false;
+  int ans = 0;
   for(int i = 1; i <= N; i++) {
-    int val;
-    if(mp.find(i) != mp.end()) val = mp[i];
-    else val = 1;
-    if(N != 1 && !flag && val == 0) {
+    int cnt = mp.count(i);
+    int c = mp[i];
+    if(ans == 0 && i != N && c == 0 && cnt) {
       cout << -1 << endl;
       return 0;
     }
-    if(!flag && val != 0) flag = true;
-    cout << val;
+    if(ans == 0 && i != N && c == 0) c = 1;
+    ans += c*pow(10, N-i);
   }
-  cout << endl;
+  cout << ans << endl;
   return 0;
 }
