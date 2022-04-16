@@ -1,6 +1,7 @@
 # contests
 4/3：https://atcoder.jp/contests/abc246/tasks のD,E
 4/10：https://atcoder.jp/contests/arc138/tasks/arc138_a
+4/17：https://atcoder.jp/contests/abc248/tasks c,e
 
 # others
 4/2：https://atcoder.jp/contests/abc035/tasks/abc035_d
