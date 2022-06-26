@@ -7,8 +7,8 @@ using ll = long long;
 using P = pair<int,int>;
 using T = tuple<int,int,int>;
 using Graph = vector<vector<int>>;
-// const int INF = 1001001001;
-const ll INF = 1100100100100100100;
+const int INF = 1001001001;
+// const ll INF = 1100100100100100100;
 const ll MOD = 1000000007;
 
 int main() {
